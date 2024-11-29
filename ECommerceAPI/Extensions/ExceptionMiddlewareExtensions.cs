@@ -1,6 +1,6 @@
-﻿using Domain.Interfaces;
-using Entities.ErrorModel;
-using Entities.Exceptions;
+﻿using Domain.Entities.ErrorModel;
+using Domain.Entities.Exceptions;
+using Domain.Interfaces;
 using Microsoft.AspNetCore.Diagnostics;
 using System.Net;
 
