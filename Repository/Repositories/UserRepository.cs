@@ -1,6 +1,6 @@
 ﻿using Domain.Entities.Models;
 using Domain.Interfaces;
-namespace Repository;
+namespace Repository.Repositories;
 
 public class UserRepository : RepositoryBase<User>, IUserRepository
 {

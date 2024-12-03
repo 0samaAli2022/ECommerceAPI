@@ -18,8 +18,12 @@ public class RepositoryContext : IdentityDbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+
         builder.ApplyConfiguration(new RoleConfiguration());
+        builder.ApplyConfiguration(new UserConfiguration());
+        builder.ApplyConfiguration(new UserRoleConfiguration());
         builder.ApplyConfiguration(new ProductConfiguration());
+
         builder.Entity<User>()
              .HasOne(u => u.ShoppingCart)
              .WithOne(c => c.User)

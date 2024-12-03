@@ -1,7 +1,7 @@
 ﻿using Application.Interfaces;
 using ECommerceAPI.ActionFilters;
 using Microsoft.AspNetCore.Mvc;
-using Shared.DTOs;
+using Shared.DTOs.Auth;
 
 namespace ECommerceAPI.Controllers;
 

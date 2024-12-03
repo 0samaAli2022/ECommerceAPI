@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Shared.DTOs;
+namespace Shared.DTOs.Auth;
 
 public record UserForAuthenticationDto
 {

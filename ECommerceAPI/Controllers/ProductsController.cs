@@ -2,7 +2,7 @@
 using ECommerceAPI.ActionFilters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Shared.DTOs;
+using Shared.DTOs.Product;
 using Shared.RequestFeatures;
 using System.Text.Json;
 
@@ -25,6 +25,7 @@ namespace ECommerceAPI.Controllers
         }
 
         [HttpGet("{id:Guid}", Name = "ProductById")]
+        [Authorize]
         public async Task<IActionResult> GetProduct(Guid id)
         {
             var product = await _service.ProductService.GetProductAsync(id, trackChanges: false);
@@ -41,13 +42,6 @@ namespace ECommerceAPI.Controllers
             return CreatedAtRoute("ProductById", new { id = createdProduct.Id }, createdProduct);
         }
 
-        [HttpDelete("{id:Guid}")]
-        [Authorize]
-        public async Task<IActionResult> DeleteProduct(Guid id)
-        {
-            await _service.ProductService.DeleteProductAsync(id, trackChanges: false);
-            return NoContent();
-        }
 
         [HttpPut("{id:Guid}")]
         [Authorize(Roles = "Administrator")]
@@ -55,6 +49,23 @@ namespace ECommerceAPI.Controllers
         public async Task<IActionResult> UpdateProduct(Guid id, [FromBody] ProductForUpdateDto product)
         {
             await _service.ProductService.UpdateProductAsync(id, product, trackChanges: true);
+            return NoContent();
+        }
+
+        [HttpPatch("{id:Guid}")]
+        [Authorize(Roles = "Administrator")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<IActionResult> PartiallyUpdateProduct(Guid id, [FromBody] ProductPatchDto productPatchDto)
+        {
+            await _service.ProductService.PartiallyUpdateProductAsync(id, productPatchDto, trackChanges: true);
+            return NoContent();
+        }
+
+        [HttpDelete("{id:Guid}")]
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> DeleteProduct(Guid id)
+        {
+            await _service.ProductService.DeleteProductAsync(id, trackChanges: false);
             return NoContent();
         }
     }

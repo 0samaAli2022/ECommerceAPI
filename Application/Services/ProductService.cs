@@ -3,7 +3,7 @@ using AutoMapper;
 using Domain.Entities.Exceptions;
 using Domain.Entities.Models;
 using Domain.Interfaces;
-using Shared.DTOs;
+using Shared.DTOs.Product;
 using Shared.RequestFeatures;
 
 namespace Application.Services;
@@ -60,12 +60,18 @@ internal sealed class ProductService : IProductService
         await _repository.SaveAsync();
     }
 
+
+    public async Task PartiallyUpdateProductAsync(Guid productId, ProductPatchDto productForUpdate, bool trackChanges)
+    {
+        var product = await GetProductAndCheckIfExists(productId, trackChanges);
+        _mapper.Map(productForUpdate, product);
+        await _repository.SaveAsync();
+    }
     private async Task<Product> GetProductAndCheckIfExists(Guid productId, bool trackChanges)
     {
         var product = await _repository.Product.GetProductAsync(productId, trackChanges)
             ?? throw new ProductNotFoundException(productId);
         return product;
     }
-
 }
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Shared.DTOs;
+using Shared.DTOs.Auth;
 
 namespace Application.Interfaces;
 

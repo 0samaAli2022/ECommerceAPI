@@ -12,8 +12,8 @@ using Repository;
 namespace ECommerceAPI.Migrations
 {
     [DbContext(typeof(RepositoryContext))]
-    [Migration("20241128013510_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20241203182154_InitialCreationWithSeed")]
+    partial class InitialCreationWithSeed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace ECommerceAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Entities.Models.Cart", b =>
+            modelBuilder.Entity("Domain.Entities.Models.Cart", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -58,7 +58,7 @@ namespace ECommerceAPI.Migrations
                     b.ToTable("Carts");
                 });
 
-            modelBuilder.Entity("Entities.Models.CartItem", b =>
+            modelBuilder.Entity("Domain.Entities.Models.CartItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -97,7 +97,7 @@ namespace ECommerceAPI.Migrations
                     b.ToTable("CartItems");
                 });
 
-            modelBuilder.Entity("Entities.Models.Order", b =>
+            modelBuilder.Entity("Domain.Entities.Models.Order", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -135,7 +135,7 @@ namespace ECommerceAPI.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("Entities.Models.OrderItem", b =>
+            modelBuilder.Entity("Domain.Entities.Models.OrderItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -177,7 +177,7 @@ namespace ECommerceAPI.Migrations
                     b.ToTable("OrderItems");
                 });
 
-            modelBuilder.Entity("Entities.Models.Product", b =>
+            modelBuilder.Entity("Domain.Entities.Models.Product", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -218,8 +218,8 @@ namespace ECommerceAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e39256f2-9c75-4975-b7c7-fa907cbf2a1e"),
-                            CreatedAt = new DateTime(2024, 11, 28, 3, 35, 10, 694, DateTimeKind.Local).AddTicks(4863),
+                            Id = new Guid("c10967fa-c6a6-43d9-ad3f-fd00f803a7bf"),
+                            CreatedAt = new DateTime(2024, 12, 3, 20, 21, 54, 114, DateTimeKind.Local).AddTicks(3921),
                             Description = "High performance laptop",
                             IsDeleted = false,
                             Name = "Laptop",
@@ -228,8 +228,8 @@ namespace ECommerceAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3e2ae189-2ec4-4d4e-8757-4cf70b5e182e"),
-                            CreatedAt = new DateTime(2024, 11, 28, 3, 35, 10, 694, DateTimeKind.Local).AddTicks(4941),
+                            Id = new Guid("740e9996-636e-4707-822e-83b3e8770ad1"),
+                            CreatedAt = new DateTime(2024, 12, 3, 20, 21, 54, 114, DateTimeKind.Local).AddTicks(4003),
                             Description = "Latest model smartphone",
                             IsDeleted = false,
                             Name = "Smartphone",
@@ -238,8 +238,8 @@ namespace ECommerceAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c040b3da-d0b0-4154-b701-ea5958379659"),
-                            CreatedAt = new DateTime(2024, 11, 28, 3, 35, 10, 694, DateTimeKind.Local).AddTicks(4944),
+                            Id = new Guid("862de18d-2ac5-46d7-b740-ad20e99ec669"),
+                            CreatedAt = new DateTime(2024, 12, 3, 20, 21, 54, 114, DateTimeKind.Local).AddTicks(4069),
                             Description = "Noise-cancelling headphones",
                             IsDeleted = false,
                             Name = "Headphones",
@@ -248,8 +248,8 @@ namespace ECommerceAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2026a83d-ea21-4f9f-969b-3c2a0112b964"),
-                            CreatedAt = new DateTime(2024, 11, 28, 3, 35, 10, 694, DateTimeKind.Local).AddTicks(4946),
+                            Id = new Guid("4a287218-6b28-4337-af99-40f29aa3f6e4"),
+                            CreatedAt = new DateTime(2024, 12, 3, 20, 21, 54, 114, DateTimeKind.Local).AddTicks(4071),
                             Description = "Feature-rich smartwatch",
                             IsDeleted = false,
                             Name = "Smartwatch",
@@ -258,8 +258,8 @@ namespace ECommerceAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2a33f01b-3b26-4f0c-aa85-3b937701c884"),
-                            CreatedAt = new DateTime(2024, 11, 28, 3, 35, 10, 694, DateTimeKind.Local).AddTicks(4947),
+                            Id = new Guid("8a7032d6-ca70-4e3c-a38e-51ba94f1c8db"),
+                            CreatedAt = new DateTime(2024, 12, 3, 20, 21, 54, 114, DateTimeKind.Local).AddTicks(4073),
                             Description = "Lightweight and powerful tablet",
                             IsDeleted = false,
                             Name = "Tablet",
@@ -297,13 +297,13 @@ namespace ECommerceAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e515bb25-3f40-4e0c-848b-bb4b927e5371",
+                            Id = "6f4a2c3e-fd4d-42d3-ae56-3a2b6c6b3942",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "495d204f-98ad-4f9c-a90c-121d040d9d93",
+                            Id = "5b78b2a1-34e8-4a72-890e-81d92f739f3f",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -468,6 +468,18 @@ namespace ECommerceAPI.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "3c98a456-dce4-4e02-a9d2-7f3b9c8e9bfa",
+                            RoleId = "6f4a2c3e-fd4d-42d3-ae56-3a2b6c6b3942"
+                        },
+                        new
+                        {
+                            UserId = "b65b1cd3-ef45-48a3-9acb-7d8e3e4672c4",
+                            RoleId = "5b78b2a1-34e8-4a72-890e-81d92f739f3f"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -489,7 +501,7 @@ namespace ECommerceAPI.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Entities.Models.User", b =>
+            modelBuilder.Entity("Domain.Entities.Models.User", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -511,28 +523,70 @@ namespace ECommerceAPI.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasDiscriminator().HasValue("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "b65b1cd3-ef45-48a3-9acb-7d8e3e4672c4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "25790515-e5c0-4049-99e6-ab1c18358b0d",
+                            Email = "admin@gmail",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@GMAIL",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJC/MaxnB37VwgkgJ0l1HOE3PU7Pdd2qcEeP9ZNzIVVIyD16gCWphcvuEEIWIWbGJA==",
+                            PhoneNumber = "589-679",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "b2a088d0-3c3e-4672-8ae8-723260042aee",
+                            TwoFactorEnabled = false,
+                            UserName = "Admin",
+                            FirstName = "Admin",
+                            LastName = "Admin",
+                            RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = "3c98a456-dce4-4e02-a9d2-7f3b9c8e9bfa",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "bfa9149b-fc12-4e4d-a7d7-db0e3c0fe565",
+                            Email = "osama@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "OSAMA@GMAIL.COM",
+                            NormalizedUserName = "OSAMAALI",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOyEC55YJzEzYJRAarU7LoWxIDSzkQXqu2QMJsBIDWCIXNIJocqzFyrKOLWgMwLqzQ==",
+                            PhoneNumber = "589-679",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "2150d411-86db-4c95-b09c-ef74d569830a",
+                            TwoFactorEnabled = false,
+                            UserName = "OsamaAli",
+                            FirstName = "Osama",
+                            LastName = "Ali",
+                            RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
-            modelBuilder.Entity("Entities.Models.Cart", b =>
+            modelBuilder.Entity("Domain.Entities.Models.Cart", b =>
                 {
-                    b.HasOne("Entities.Models.User", "User")
+                    b.HasOne("Domain.Entities.Models.User", "User")
                         .WithOne("ShoppingCart")
-                        .HasForeignKey("Entities.Models.Cart", "UserId")
+                        .HasForeignKey("Domain.Entities.Models.Cart", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Entities.Models.CartItem", b =>
+            modelBuilder.Entity("Domain.Entities.Models.CartItem", b =>
                 {
-                    b.HasOne("Entities.Models.Cart", "Cart")
+                    b.HasOne("Domain.Entities.Models.Cart", "Cart")
                         .WithMany("Items")
                         .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Entities.Models.Product", "Product")
+                    b.HasOne("Domain.Entities.Models.Product", "Product")
                         .WithMany("CartItems")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -543,9 +597,9 @@ namespace ECommerceAPI.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("Entities.Models.Order", b =>
+            modelBuilder.Entity("Domain.Entities.Models.Order", b =>
                 {
-                    b.HasOne("Entities.Models.User", "User")
+                    b.HasOne("Domain.Entities.Models.User", "User")
                         .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -554,15 +608,15 @@ namespace ECommerceAPI.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Entities.Models.OrderItem", b =>
+            modelBuilder.Entity("Domain.Entities.Models.OrderItem", b =>
                 {
-                    b.HasOne("Entities.Models.Order", "Order")
+                    b.HasOne("Domain.Entities.Models.Order", "Order")
                         .WithMany("Items")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Entities.Models.Product", "Product")
+                    b.HasOne("Domain.Entities.Models.Product", "Product")
                         .WithMany("OrderItems")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.NoAction)
@@ -624,24 +678,24 @@ namespace ECommerceAPI.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Entities.Models.Cart", b =>
+            modelBuilder.Entity("Domain.Entities.Models.Cart", b =>
                 {
                     b.Navigation("Items");
                 });
 
-            modelBuilder.Entity("Entities.Models.Order", b =>
+            modelBuilder.Entity("Domain.Entities.Models.Order", b =>
                 {
                     b.Navigation("Items");
                 });
 
-            modelBuilder.Entity("Entities.Models.Product", b =>
+            modelBuilder.Entity("Domain.Entities.Models.Product", b =>
                 {
                     b.Navigation("CartItems");
 
                     b.Navigation("OrderItems");
                 });
 
-            modelBuilder.Entity("Entities.Models.User", b =>
+            modelBuilder.Entity("Domain.Entities.Models.User", b =>
                 {
                     b.Navigation("Orders");
 

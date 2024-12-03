@@ -2,7 +2,7 @@
 using ECommerceAPI.ActionFilters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Shared.DTOs;
+using Shared.DTOs.Cart;
 using System.Security.Claims;
 
 namespace ECommerceAPI.Controllers
@@ -10,12 +10,12 @@ namespace ECommerceAPI.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CartController(IServiceManager service) : ControllerBase
     {
         private readonly IServiceManager _service = service;
 
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> GetCart()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -24,17 +24,24 @@ namespace ECommerceAPI.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
-        public async Task<IActionResult> AddOrUpdateCartItem([FromBody] UpdateCartItemDto addCartItemDto)
+        public async Task<IActionResult> AddOrUpdateCartItem([FromBody] AddCartItemDto addCartItemDto)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            await _service.CartService.AddOrUpdateCartItemAsync(userId!, addCartItemDto);
+            await _service.CartService.AddCartItemAsync(userId!, addCartItemDto);
+            return NoContent();
+        }
+
+        [HttpPatch]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
+        public async Task<IActionResult> UpdateCartItemQuantity([FromBody] UpdateCartItemDto updateCartItemDto)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            await _service.CartService.UpdateCartItemAsync(userId!, updateCartItemDto);
             return NoContent();
         }
 
         [HttpDelete]
-        [Authorize]
         public async Task<IActionResult> DeleteCart()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);

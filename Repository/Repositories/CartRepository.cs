@@ -2,7 +2,7 @@
 using Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Repository;
+namespace Repository.Repositories;
 
 public class CartRepository(RepositoryContext repositoryContext) : RepositoryBase<Cart>(repositoryContext),
     ICartRepository

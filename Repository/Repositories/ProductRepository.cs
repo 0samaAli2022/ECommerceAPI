@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Repository.Extensions;
 using Shared.RequestFeatures;
 
-namespace Repository;
+namespace Repository.Repositories;
 
 public class ProductRepository(RepositoryContext repositoryContext) :
     RepositoryBase<Product>(repositoryContext), IProductRepository

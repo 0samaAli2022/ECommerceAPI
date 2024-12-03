@@ -3,7 +3,7 @@ using AutoMapper;
 using Domain.Entities.Exceptions;
 using Domain.Entities.Models;
 using Domain.Interfaces;
-using Shared.DTOs;
+using Shared.DTOs.Order;
 
 namespace Application.Services;
 
@@ -37,7 +37,9 @@ internal sealed class OrderService : IOrderService
     public async Task<OrderDto> PlaceOrderAsync(string userId)
     {
         var cart = await _repository.Cart.GetCartByUserIdAsync(userId, trackChanges: true);
-        if (cart.Items.Count == 0) throw new EmptyCartException();
+        if (cart.Items.Count == 0)
+            throw new EmptyCartException();
+
         var orderEntity = _mapper.Map<Order>(cart);
         _repository.Order.CreateOrder(orderEntity);
         ReduceStockQuantity(orderEntity.Items);

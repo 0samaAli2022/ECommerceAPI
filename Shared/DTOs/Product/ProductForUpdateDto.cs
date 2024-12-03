@@ -1,4 +1,4 @@
-﻿namespace Shared.DTOs;
+﻿namespace Shared.DTOs.Product;
 
 public record ProductForUpdateDto : ProductForManipulationDto;
 

@@ -1,4 +1,4 @@
-﻿using Shared.DTOs;
+﻿using Shared.DTOs.Order;
 
 namespace Application.Interfaces;
 

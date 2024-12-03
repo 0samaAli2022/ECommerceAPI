@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -8,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ECommerceAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class InitialCreationWithSeed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -299,8 +298,17 @@ namespace ECommerceAPI.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "495d204f-98ad-4f9c-a90c-121d040d9d93", null, "Administrator", "ADMINISTRATOR" },
-                    { "e515bb25-3f40-4e0c-848b-bb4b927e5371", null, "User", "USER" }
+                    { "5b78b2a1-34e8-4a72-890e-81d92f739f3f", null, "Administrator", "ADMINISTRATOR" },
+                    { "6f4a2c3e-fd4d-42d3-ae56-3a2b6c6b3942", null, "User", "USER" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "Address", "ConcurrencyStamp", "Discriminator", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RefreshToken", "RefreshTokenExpiryTime", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[,]
+                {
+                    { "3c98a456-dce4-4e02-a9d2-7f3b9c8e9bfa", 0, null, "bfa9149b-fc12-4e4d-a7d7-db0e3c0fe565", "User", "osama@gmail.com", true, "Osama", "Ali", false, null, "OSAMA@GMAIL.COM", "OSAMAALI", "AQAAAAIAAYagAAAAEOyEC55YJzEzYJRAarU7LoWxIDSzkQXqu2QMJsBIDWCIXNIJocqzFyrKOLWgMwLqzQ==", "589-679", true, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "2150d411-86db-4c95-b09c-ef74d569830a", false, "OsamaAli" },
+                    { "b65b1cd3-ef45-48a3-9acb-7d8e3e4672c4", 0, null, "25790515-e5c0-4049-99e6-ab1c18358b0d", "User", "admin@gmail", true, "Admin", "Admin", false, null, "ADMIN@GMAIL", "ADMIN", "AQAAAAIAAYagAAAAEJC/MaxnB37VwgkgJ0l1HOE3PU7Pdd2qcEeP9ZNzIVVIyD16gCWphcvuEEIWIWbGJA==", "589-679", true, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "b2a088d0-3c3e-4672-8ae8-723260042aee", false, "Admin" }
                 });
 
             migrationBuilder.InsertData(
@@ -308,11 +316,20 @@ namespace ECommerceAPI.Migrations
                 columns: new[] { "Id", "CreatedAt", "CreatedBy", "Description", "IsDeleted", "Name", "Price", "StockQuantity", "UpdatedAt", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { new Guid("2026a83d-ea21-4f9f-969b-3c2a0112b964"), new DateTime(2024, 11, 28, 3, 35, 10, 694, DateTimeKind.Local).AddTicks(4946), null, "Feature-rich smartwatch", false, "Smartwatch", 299.99m, 75, null, null },
-                    { new Guid("2a33f01b-3b26-4f0c-aa85-3b937701c884"), new DateTime(2024, 11, 28, 3, 35, 10, 694, DateTimeKind.Local).AddTicks(4947), null, "Lightweight and powerful tablet", false, "Tablet", 399.99m, 150, null, null },
-                    { new Guid("3e2ae189-2ec4-4d4e-8757-4cf70b5e182e"), new DateTime(2024, 11, 28, 3, 35, 10, 694, DateTimeKind.Local).AddTicks(4941), null, "Latest model smartphone", false, "Smartphone", 699.99m, 100, null, null },
-                    { new Guid("c040b3da-d0b0-4154-b701-ea5958379659"), new DateTime(2024, 11, 28, 3, 35, 10, 694, DateTimeKind.Local).AddTicks(4944), null, "Noise-cancelling headphones", false, "Headphones", 199.99m, 200, null, null },
-                    { new Guid("e39256f2-9c75-4975-b7c7-fa907cbf2a1e"), new DateTime(2024, 11, 28, 3, 35, 10, 694, DateTimeKind.Local).AddTicks(4863), null, "High performance laptop", false, "Laptop", 999.99m, 50, null, null }
+                    { new Guid("4a287218-6b28-4337-af99-40f29aa3f6e4"), new DateTime(2024, 12, 3, 20, 21, 54, 114, DateTimeKind.Local).AddTicks(4071), null, "Feature-rich smartwatch", false, "Smartwatch", 299.99m, 75, null, null },
+                    { new Guid("740e9996-636e-4707-822e-83b3e8770ad1"), new DateTime(2024, 12, 3, 20, 21, 54, 114, DateTimeKind.Local).AddTicks(4003), null, "Latest model smartphone", false, "Smartphone", 699.99m, 100, null, null },
+                    { new Guid("862de18d-2ac5-46d7-b740-ad20e99ec669"), new DateTime(2024, 12, 3, 20, 21, 54, 114, DateTimeKind.Local).AddTicks(4069), null, "Noise-cancelling headphones", false, "Headphones", 199.99m, 200, null, null },
+                    { new Guid("8a7032d6-ca70-4e3c-a38e-51ba94f1c8db"), new DateTime(2024, 12, 3, 20, 21, 54, 114, DateTimeKind.Local).AddTicks(4073), null, "Lightweight and powerful tablet", false, "Tablet", 399.99m, 150, null, null },
+                    { new Guid("c10967fa-c6a6-43d9-ad3f-fd00f803a7bf"), new DateTime(2024, 12, 3, 20, 21, 54, 114, DateTimeKind.Local).AddTicks(3921), null, "High performance laptop", false, "Laptop", 999.99m, 50, null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[,]
+                {
+                    { "6f4a2c3e-fd4d-42d3-ae56-3a2b6c6b3942", "3c98a456-dce4-4e02-a9d2-7f3b9c8e9bfa" },
+                    { "5b78b2a1-34e8-4a72-890e-81d92f739f3f", "b65b1cd3-ef45-48a3-9acb-7d8e3e4672c4" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -1,6 +1,6 @@
 ﻿using Domain.Interfaces;
 
-namespace Repository;
+namespace Repository.Repositories;
 
 public sealed class RepositoryManager : IRepositoryManager
 {
