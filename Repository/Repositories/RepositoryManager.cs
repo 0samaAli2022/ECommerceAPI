@@ -14,13 +14,13 @@ public sealed class RepositoryManager : IRepositoryManager
     {
         _repositoryContext = repositoryContext;
         _userRepository = new Lazy<IUserRepository>(() => new
-        UserRepository(repositoryContext));
+            UserRepository(repositoryContext));
         _productRepository = new Lazy<IProductRepository>(() => new
-        ProductRepository(repositoryContext));
+            ProductRepository(repositoryContext));
         _cartRepository = new Lazy<ICartRepository>(() => new
-        CartRepository(repositoryContext));
+            CartRepository(repositoryContext));
         _orderRepository = new Lazy<IOrderRepository>(() => new
-        OrderRepository(repositoryContext));
+            OrderRepository(repositoryContext));
     }
     public IUserRepository User => _userRepository.Value;
     public IProductRepository Product => _productRepository.Value;

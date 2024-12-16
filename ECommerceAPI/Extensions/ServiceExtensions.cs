@@ -81,4 +81,7 @@ public static class ServiceExtensions
             };
         });
     }
+
+    public static void ConfigureResponseCaching(this IServiceCollection services) =>
+        services.AddResponseCaching();
 }

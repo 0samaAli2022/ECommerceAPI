@@ -1,9 +1,12 @@
 using Domain.Interfaces;
 using ECommerceAPI.ActionFilters;
 using ECommerceAPI.Extensions;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using NLog;
+using Shared.FluentValidators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,8 +29,17 @@ builder.Services.AddAuthentication();
 builder.Services.ConfigureIdentity();
 builder.Services.ConfigureJWT(builder.Configuration);
 builder.Services.AddScoped<ValidationFilterAttribute>();
+builder.Services.ConfigureResponseCaching();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    //options.ModelValidatorProviders.Clear(); // Disable Data Annotations validation
+});
+
+builder.Services.AddFluentValidationAutoValidation()
+    .AddFluentValidationClientsideAdapters()
+    .AddValidatorsFromAssemblyContaining<ProductCreationValidator>();
+
 
 var app = builder.Build();
 
@@ -46,6 +58,8 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
     ForwardedHeaders = ForwardedHeaders.All
 });
 app.UseCors("CorsPolicy");
+
+app.UseResponseCaching();
 
 app.UseAuthentication();
 app.UseAuthorization();

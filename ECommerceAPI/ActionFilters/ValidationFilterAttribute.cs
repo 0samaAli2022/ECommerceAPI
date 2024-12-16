@@ -18,7 +18,13 @@ public class ValidationFilterAttribute : IActionFilter
             return;
         }
         if (!context.ModelState.IsValid)
-            context.Result = new UnprocessableEntityObjectResult(context.ModelState);
+        {
+            var messages = context.ModelState
+              .SelectMany(modelState => modelState.Value.Errors)
+              .Select(err => err.ErrorMessage)
+              .ToList();
+            context.Result = new UnprocessableEntityObjectResult(messages);
+        }
     }
     public void OnActionExecuted(ActionExecutedContext context) { }
 }

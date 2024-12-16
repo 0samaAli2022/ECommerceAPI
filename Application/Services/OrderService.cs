@@ -42,8 +42,11 @@ internal sealed class OrderService : IOrderService
 
         var orderEntity = _mapper.Map<Order>(cart);
         _repository.Order.CreateOrder(orderEntity);
+
         ReduceStockQuantity(orderEntity.Items);
+
         _repository.Cart.DeleteCart(cart);
+
         await _repository.SaveAsync();
         var orderDto = _mapper.Map<OrderDto>(orderEntity);
         return orderDto;

@@ -17,6 +17,7 @@ namespace ECommerceAPI.Controllers
 
         [HttpGet]
         [Authorize]
+        [ResponseCache(Duration = 60)]
         public async Task<IActionResult> GetProducts([FromQuery] ProductParameters productParameters)
         {
             var pagedProducts = await _service.ProductService.GetAllProductsAsync(productParameters, trackChanges: false);
@@ -26,6 +27,7 @@ namespace ECommerceAPI.Controllers
 
         [HttpGet("{id:Guid}", Name = "ProductById")]
         [Authorize]
+        [ResponseCache(Duration = 60)]
         public async Task<IActionResult> GetProduct(Guid id)
         {
             var product = await _service.ProductService.GetProductAsync(id, trackChanges: false);

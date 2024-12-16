@@ -16,6 +16,7 @@ public class ProductRepository(RepositoryContext repositoryContext) :
             .Search(productParameters.SearchTerm!)
             .Sort(productParameters.OrderBy!)
             .ToListAsync();
+
         var count = await FindAll(trackChanges)
             .FilterProducts(productParameters.MinPrice, productParameters.MaxPrice)
             .Search(productParameters.SearchTerm!)
